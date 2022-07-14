@@ -6,6 +6,9 @@ A simple way to safely do string replacement with React components. Zero depende
 
 > Aka turn a string into an array of React components
 
+The forked version returns an index (i) from the function based on the loop of the split string. This is related to the number of matches but because the source code uses the same i that is used in the function to do the replacment - on matches in a split array it is odd numbers only. 1,3,5. I needed to use this
+index as a normal array index - 0,1,2. My change makes the function return 0,1,2 ... I have not checked if the tests still run. 
+
 ## Install
 
 ```sh
