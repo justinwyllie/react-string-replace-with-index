@@ -69,7 +69,9 @@ function replaceString(str, match, fn) {
   var result = str.split(re);
 
   // Apply fn to all odd elements
+  var z = 0;
   for (var i = 1, length = result.length; i < length; i += 2) {
+    z++;
     /** @see {@link https://github.com/iansinnott/react-string-replace/issues/74} */
     if (result[i] === undefined || result[i - 1] === undefined) {
       console.warn('reactStringReplace: Encountered undefined value during string replacement. Your RegExp may not be working the way you expect.');
@@ -78,7 +80,7 @@ function replaceString(str, match, fn) {
 
     curCharLen = result[i].length;
     curCharStart += result[i - 1].length;
-    result[i] = fn(result[i], i, curCharStart);
+    result[i] = fn(result[i], z, curCharStart);
     curCharStart += curCharLen;
   }
 
